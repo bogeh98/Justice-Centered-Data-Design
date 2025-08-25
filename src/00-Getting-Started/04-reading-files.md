@@ -270,8 +270,8 @@ Write a markdown link, e.g., [Rendered linked text](./path/to/file.md), with a r
 
 Write one that assumes the file is `.md`, and another that assumes it is an `.html` file.
 
-- [O.3 Using the Command Line](./03-cmd-line.md)
-- [0.3 Using the Command Line](./03-cmd-line.html)
+- [Command Line MD](./03-cmd-line.md)
+- [Command Line HTML](./03-cmd-line.html)
 
 ## E3. Link to a resource in same project
 
@@ -295,3 +295,10 @@ Write a markdown image, e.g., `![Alt text description](./path/in/here.jpg)`, whi
 2. We won't require any peer responses yet, since we're still getting the hang of git/Github. But, in the future, some chapters will include a peer response.
 3. Submit the PR link in Moodle, when you're ready.
     <p class="warning">Make sure that your repo is set to being Public.</p>
+
+## Practice in Class
+
+1. List Item 1
+  1. Sublist
+2. List Item 2
+3. List Item 3

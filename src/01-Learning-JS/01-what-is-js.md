@@ -186,49 +186,51 @@ There are other conventions and rules, but we don't need to belabor them right n
     </video>
 
 ```javascript
-// Convert this into a multiline comment
-// that includes your name, date,
-// and top 3 favorite foods, where
-// each set of info should be on a new line.
+/* My name is Beatrice.
+* The date is 8/27/2025.
+* My top 3 favorite foods are mac and cheese, sandwiches, and salad bowls.
+*/
 
-/**
- * 1. Replace the value in-between the
- *    double quotes for each variable below
- *    with your favorite foods listed above.
- *      Example:
- *      "Enter_#1_Favorite_Food_Here" --> "Pizza"
- *
- * 2. Rename the variable names, (e.g., _faveFood1_),
- *    appropriately with camelCase scheme.
- *
- * 3. Replace all "___" with the declaration type
- *    that will make sure each favorite food is
- *    logged to the correct place in the console.
-**/
-___ _faveFood1_ = "Enter_#1_Favorite_Food_Here"
-___ _faveFood2_ = "Enter_#2_Favorite_Food_Here"
+/*  "Mac and cheese"
+* "Sandwich"
+* "Salad bowl"
+*/
 
-console.log(
-  "Ok, so y'all know that my #1 favorite food is ",
-  _faveFood1_,
-  ", and my second favorite food is ", _faveFood2_
-)
+/* macAndCheese
+* sandwich
+* saladBowl
+*/
 
-if (_faveFood2_.length > 0) {
-  // Redeclare _faveFood1_ within this scope only
-  ___ _faveFood1_ = "Enter__NEW__#1_Favorite_Food_Here"
+/*___ macAndCheese = "Mac and cheese"
+*___ sandwich = "Sandwich"
+*___ saladBowl = "Salad Bowl"
+*/
 
-  console.log(
-    "jk! ",
-    _faveFood1_,
-    " is actually my #1 favorite food."
-  )
-}
+/* console.log(
+*   "Ok, so y'all know that my #1 favorite food is ",
+*   macAndCheese,
+*   ", and my second favorite food is ", sandwich
+* )
+*/
 
-console.log(
-  "Ok. Don't get mad, but my #1 favorite is ",
-  _faveFood1_, " actually."
-)
+/* if (sandwich.length > 0) {
+*___ macAndCheese = "Cheeseburger"
+*/
+
+/*
+*  console.log(
+*    "jk! ",
+*    macAndCheese,
+*    " is actually my #1 favorite food."
+*  )
+* }
+*/
+
+/* console.log(
+*  "Ok. Don't get mad, but my #1 favorite is ",
+*  macAndCheese, " actually."
+* )
+*/
 ```
 
 ## Conclusion

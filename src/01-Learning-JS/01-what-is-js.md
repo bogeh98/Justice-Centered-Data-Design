@@ -185,52 +185,37 @@ There are other conventions and rules, but we don't need to belabor them right n
       <source src="../assets/vids/01-js/01-web-console.mp4" type="video/mp4" />
     </video>
 
-```javascript
+```js
 /* My name is Beatrice.
 * The date is 8/27/2025.
 * My top 3 favorite foods are mac and cheese, sandwiches, and salad bowls.
 */
 
-/*  "Mac and cheese"
-* "Sandwich"
-* "Salad bowl"
-*/
+var macAndCheese = "Mac and cheese"
+var sandwich = "Sandwich"
+var saladBowl = "Salad Bowl"
 
-/* macAndCheese
-* sandwich
-* saladBowl
-*/
+console.log(
+  "Ok, so y'all know that my #1 favorite food is ",
+  macAndCheese,
+  ", and my second favorite food is ", sandwich
+)
 
-/*___ macAndCheese = "Mac and cheese"
-*___ sandwich = "Sandwich"
-*___ saladBowl = "Salad Bowl"
-*/
+if (sandwich.length > 0) {
+  // Redeclare _faveFood1_ within this scope only
+  var macAndCheese = "Cheeseburger"
 
-/* console.log(
-*   "Ok, so y'all know that my #1 favorite food is ",
-*   macAndCheese,
-*   ", and my second favorite food is ", sandwich
-* )
-*/
+  console.log(
+    "jk! ",
+    macAndCheese,
+    " is actually my #1 favorite food."
+  )
+}
 
-/* if (sandwich.length > 0) {
-*___ macAndCheese = "Cheeseburger"
-*/
-
-/*
-*  console.log(
-*    "jk! ",
-*    macAndCheese,
-*    " is actually my #1 favorite food."
-*  )
-* }
-*/
-
-/* console.log(
-*  "Ok. Don't get mad, but my #1 favorite is ",
-*  macAndCheese, " actually."
-* )
-*/
+console.log(
+  "Ok. Don't get mad, but my #1 favorite is ",
+  macAndCheese, " actually."
+)
 ```
 
 ## Conclusion

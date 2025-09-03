@@ -220,7 +220,6 @@ let person2ChildStatus = 'Charles Riley afed 10 days'
 ```js
 let person2Name = 'Anthony Clark'
 let person2Age = 60
-person2Age = "more than 30 years old"
 let person2Disease = 'recent emigrant'
 let person2Profession = 'laborer'
 let person2Gender = 'm'
@@ -235,7 +234,7 @@ Use the following console logs:
 - For `else`: `console.log('Person is more than 30 years old.')`
 
 ```js
-if (person2Age == 60) {
+if (person2Age == 27) {
   console.log('Person is less than 30 years old.')
 }
 else {

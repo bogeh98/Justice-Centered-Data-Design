@@ -88,7 +88,7 @@ For example, if we wanted to pull out the first item in our `names` list, we cou
 
 Try it out in the console with the `ages` Array.
 
-```javascript
+```js
 ages[0] // 28
 ages[2] // 60
 ```
@@ -394,10 +394,11 @@ For this first exercise, I'll provide you with the basic structure:
 
 ```javascript
 // Declare new and freshly empty array in which to push new items
-let lessProfessions = []
-for () {
-  if () {
+let lessProfessions = ["married", "laborer", "widow", "laborer"]
+for (const professions in lessProfessions) {
+  if (lessProfessions[professions] != "laborer") {
     // Do something in here
+    console.log()
   }
 }
 ```

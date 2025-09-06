@@ -262,7 +262,7 @@ Put the screenshot image in the following path, which assumes we're in the root 
 
 Use a relative filepath in the Markdown image to do so.
 
-ADD_YOUR_IMG_HERE
+![markdown screenshot](./../assets/images/markdown-screenshot.png)
 
 ## E2. Link to 0.3 Using the Command Line
 
@@ -270,8 +270,8 @@ Write a markdown link, e.g., [Rendered linked text](./path/to/file.md), with a r
 
 Write one that assumes the file is `.md`, and another that assumes it is an `.html` file.
 
-- enter_md_link_here
-- enter_html_link_here
+- [Command Line MD](./03-cmd-line.md)
+- [Command Line HTML](./03-cmd-line.html)
 
 ## E3. Link to a resource in same project
 
@@ -279,7 +279,7 @@ Write a markdown link, e.g., [Rendered linked text](./path/to/file.md), with a *
 
 <p class="tip">You will need to use the double-dot <code>..</code> notation to travel back up the hierarchy in the project, since the image is not in the same folder/directory as this chapter's file.</p>
 
-- Link to the Github Anatomy image.
+- [Github Anatomy image](./../assets/images/0-gs/gh-anatomy.png)
 
 ## E4. Render an image
 
@@ -287,7 +287,7 @@ Write a markdown image, e.g., `![Alt text description](./path/in/here.jpg)`, whi
 
 <p class="tip">You will need to use the double-dot <code>..</code> notation.</p>
 
-ENTER_IMG_HERE
+![hotel bookings data](./../assets/images/hotel-bookings.webp)
 
 ## Submission
 
@@ -295,3 +295,10 @@ ENTER_IMG_HERE
 2. We won't require any peer responses yet, since we're still getting the hang of git/Github. But, in the future, some chapters will include a peer response.
 3. Submit the PR link in Moodle, when you're ready.
     <p class="warning">Make sure that your repo is set to being Public.</p>
+
+## Practice in Class
+
+1. List Item 1
+  1. Sublist
+2. List Item 2
+3. List Item 3

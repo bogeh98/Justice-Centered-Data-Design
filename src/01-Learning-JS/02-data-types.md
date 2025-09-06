@@ -62,8 +62,46 @@ Primitives enable you to perform fundamental data operations.
 3. Print them all to the console with `console.log()`.
 4. Check your work, as you go, by opening the browser console with the **Inspect Element** tool.
 
-```javascript
-// Write your code in here
+```js
+// String
+let coffee = "Cafe Au Lait"
+
+// Number
+let juice = 29
+
+// Boolean
+let espressoTrue = true
+let espressoFalse = false
+
+// null
+null
+
+// undefined
+let water
+console.log(water)  //Output: undefined
+
+// Object
+let diffBeverages = {
+  cold: "Milk",
+  hot: "Tea",
+}
+
+// Assign new property to object
+diffBeverages.spicy = "Chai"
+
+// Both Output: "Chai"
+console.log(diffBeverages['spicy'])
+console.log(diffBeverages.spicy)
+
+//Print suite to console
+console.log(coffee)
+console.log(juice)
+console.log(espressoTrue)
+console.log(espressoFalse)
+console.log(null)
+console.log(water)
+console.log(diffBeverages)
+console.log(diffBeverages.spicy)
 ```
 
 ## Submission

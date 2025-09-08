@@ -395,10 +395,10 @@ For this first exercise, I'll provide you with the basic structure:
 ```js
 // Declare new and freshly empty array in which to push new items
 let lessProfessions = []
-for (let i = 0; i < professions.length; i++) {
+for (const i in professions) {
   if (i !== 1) {
     // Do something in here
-    console.log(professions[i])
+    professions.push(professions[i])
   }
 }
 ```

@@ -411,6 +411,8 @@ for (let i in professions) {
 ```js
 // Convert me to output `lessProfessions`
 lessProfessions
+
+console.log(lessProfessions)
 ```
 
 ### E2. Push/add a new profession to an array

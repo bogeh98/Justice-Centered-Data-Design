@@ -39,6 +39,14 @@ Demonstrate the following knowledge and skills:
     1. Create meaningful **branch** that uses this name: `CHP/lastname--MIDTERM`.
     2. Practice the iterative process to **commit** and **push** regularly with meaningful **commit messages**.
 
+### Choosing a dataset
+
+You will need to use one of the 3 available datasets provided in `/src/data/midterm-options/`:
+
+1. `/books/`: A dataset with scraped publication information about published books.
+2. `/meta-ads/`: A dataset created and used by the folks at The Markup, which looked at how much money Meta made from ads in relationship to political violence.
+3. `/pollution/`: A dataset created and used by scientists to help develop more robust predictive models about large city pollution.
+
 ## Required Sections
 
 In the preformatted text block below, I provide you with a template by which to use and modify in your midterm.md file.

@@ -1,4 +1,6 @@
-# 2.1-Why Statistics Are Important [to TPC]
+# 2.1-Why Statistics Are Important [to Humanists]
+
+<p style="display:none"></p>
 
 ## Start Your GH Workflow
 
@@ -9,9 +11,9 @@ Remember, before you start anything else, always follow this GH methodological w
 
 ## Overview
 
-The *Statistics for Social Justice* book (S4SJ) is written directly to and for social workers—not TPC. However, throughout this course, I am asking us to translate concerns, issues, situations, and methods that we recognize as potentially overlapping and similar with TPC professionals or even be inspired to invent different and new issues and methods for TPC.
+The *Statistics for Social Justice* book (S4SJ) is written directly to and for social workers—not TPC or other communication design fields. However, throughout this course, I am asking us to translate concerns, issues, situations, and methods that we recognize as potentially overlapping and similar with communication professionals or even be inspired to invent different and new issues and methods for TPC.
 
-The first three readings set us down this inventive path for the future of TPC professionals to take up more data-driven, structural approaches to our work, ***or what could be our work***! Here's a basic rationale and use for each of the readings in the context of this course:
+The first three readings set us down this inventive path for the future of communication professionals to take up more data-driven, structural approaches to our work, ***or what could be our work***! Here's a basic rationale and use for each of the readings in the context of this course:
 
 1. The S4SJ book provides us with the initial structure of concepts and statistical techniques to adapt into our own ***structural perspective*** to carry into and inform TPC.
 2. Lindgren, Gerdes, and Lawrence discuss and define what they call a social justice ethic. They briefly survey the social justice turn in TPC, and its exigence in response to the myriad ways ethics have been conceptualized and operationalized in TPC's past. This book chapter can help us gain a sense for where TPC has been and where it is going with regards to social justice work.
@@ -79,7 +81,27 @@ Your_response_here
 
 Your_response_here
 
-### 3.2. Why an SJ ethic?
+### 3.2. Defining critical issues
+
+**Question**: Briefly define each of the critical issues discussed: Cultural Imperialism, Marginalization, and Intersectional Oppression.
+
+**Cultural Imperialism**: Your_response_here
+
+**Marginalization**: Your_response_here
+
+**Intersectional Oppression**: Your_response_here
+
+### 3.3. Defining the 3Ps to help us recognize oppression
+
+**Question**: Define each of the 3Ps below. Explain how each helps us recognize oppression.
+
+**Power**: Your_response_here
+
+**Privilege**: Your_response_here
+
+**Positionality**: Your_response_here
+
+### 3.4. Why an SJ ethic?
 
 **Question**: Why do Lindgren, Gerdes, and Lawrence position a "SJ ethic" as essential to the future of TPC? What types of problems does it help TPC tackle?
 
@@ -110,7 +132,7 @@ Your_response_here
 
 Your_response_here
 
-## 6. Translating the structural approach into TPC
+## 6. Translating the structural approach into TPC / Other Humanities Fields
 
 **Question**: After considering all of these texts -- their exigencies, propositions, and methods -- translate Mullaly's broader definition of the *structural approach* and Moreau's *practice methods* in social work into the domain of TPC or humanist domain of work by putting them into conversation with Lindgren, Gerdes, and Lawrence's SJ ethic and Graham et al's statistical genre analysis. In other words, begin to develop your own structural perspective and set of practices that translates Moreau's 5 practices. Finally, add one new practice approach specific to TPC/your domain.
 
@@ -119,5 +141,5 @@ Your_response_here
 ## Submission
 
 1. Create a **PR** (**pull request**) and use the provided content in the template to start it.
-2. Respond to your peers and comment on their work on at least one chapter..
+2. Respond to your peers and comment on their work on at least one chapter.
 3. Submit the PR link in Moodle, when you're ready.

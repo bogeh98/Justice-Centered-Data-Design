@@ -180,12 +180,26 @@ Ok, those chains were ridiculous, right? Below, complete the same outcome, but u
   Put those desired marks to replace in an Array. You will also need to write a conditional statement to handle the <code>--</code> differently.
 </p>
 
-```javascript
+```js
 // Convert me and use a for loop to remove all desired punctuation
+let puncsToRemove = ["\"", "\'", ",", ".", "?", ";", "--"]
+let vonnegutNoPuncs = vonnegutNoSB
+
+for (const puncs of puncsToRemove) {
+  if (puncs === "--") {
+    vonnegutNoPuncs = vonnegutNoPuncs.replaceAll(puncs, " ")
+  }
+  else {
+    vonnegutNoPuncs = vonnegutNoPuncs.replaceAll(puncs, "")
+  }
+}
 ```
 
-```javascript
+```js
 // Convert me and output the new string, vonnegutNoPuncs, here
+vonnegutNoPuncs
+
+console.log(vonnegutNoPuncs)
 ```
 
 ### E4. Split the String into an Array of Strings
@@ -194,12 +208,16 @@ Sometimes, we need to isolate parts of a text for analysis by splitting it into 
 
 Create an array of strings of Vonnegut's story as a new variable called `vonnSplit`. Do so by splitting the newly cleaned String, `vonnegutNoPuncs`, with an empty single space (`" "`).
 
-```javascript
+```js
 // Convert me to a js block and complete the exercise
+let vonnSplit = vonnegutNoPuncs.split(" ")
 ```
 
-```javascript
+```js
 // Convert me to a js block and output `vonnSplit`
+vonnSplit
+
+console.log(vonnSplit)
 ```
 
 ### E5. Create array of all hyphenated words
@@ -211,9 +229,19 @@ Ok, last exercise! Complete the following steps to create a new array that only 
 1. In a first codeblock, declare a new array called `hyphenatedWords`. Then, push only hyphenated words into it.
 2. In a second codeblock, output the new array to verify your work.
 
+```js
+let hyphenatedWords = vonnSplit.filter(vonnSplit => vonnSplit.includes("-"))
+```
+
+```js
+hyphenatedWords
+
+console.log(hyphenatedWords)
+```
+
 **Question**: What oddities do you notice about the outcome? Below, explain what you suggest is happenning, and what you would do to resolve the issue with isolating a better list of hyphenated words.
 
-ENTER_YOUR_RESPONSE_HERE
+**Answer**: I noticed that the some of the items (i.e., hyphenated words) include the characters \r\n, which represent a line break. To clean the list, I would use removeAll like this: "hyphenatedWords.removeAll("\r\n").
 
 ## Submission
 

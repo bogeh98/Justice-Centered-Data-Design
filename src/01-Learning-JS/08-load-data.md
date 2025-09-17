@@ -64,7 +64,7 @@ In this project, check out the `/src/data/events.json` file, which is a small ex
   What other properties of JSON do you notice?
 </p>
 
-**RESPONSE**: Write your response here.
+**RESPONSE**: Write your response here. The data in the file is well-organized; you can easily see the paths for objects, array items, etc. (e.g., when you click/highlight a key, it shows you the object index number and the type of value- string or numerical value- in the key-value pair).
 
 ## 1.8.2 Framework's FileAttachment()
 
@@ -74,8 +74,10 @@ Framework's `FileAttachment()` function takes one parameter, which is a String l
 
 Here's the syntax:
 
-```javascript
+```js
 const data = FileAttachment("./../relative/path/to/data.csv")
+
+console.log(data)
 ```
 
 If loaded successfully, the following properties of the variable are available in addition to the data:
@@ -220,7 +222,12 @@ Goal: Demonstrate your understanding of the CSV file format by creating a mini C
 
 Use the empty codeblock below.
 
-```
+```javascript
+genre, artist, song
+rock, Nirvana, "In Bloom"
+pop, Lady Gaga, "Bad Romance"
+funk, Funkadelic, "Can You Get to That"
+hip hop, Tupac, "California Love"
 ```
 
 ### E2. Load a CSV file
@@ -234,12 +241,16 @@ In this case, load the following CSV file: `nc_absentee_mail_2024.csv`.
 2. In the second codeblock, use `console.log()` to log the following properties to the console: `.name` and `.size`.
 3. Still in the second codeblock, add a second `console.log()` and log the first object in the Array to the console.
 
-```javascript
+```js
 // Your FileAttachment() code goes here
+const ncAbsenteeBallotData2024 = FileAttachment("./../data/nc-voters/nc_absentee_mail_2024.csv").csv({typed: true})
 ```
 
-```javascript
+```js
 // Your other code with your variable goes here
+ncAbsenteeBallotData2024
+
+console.log(ncAbsenteeBallotData2024[0])
 ```
 
 Make sure that you verify the logs are there!

@@ -175,7 +175,7 @@ if () {
 ```
 
 ```js
-if (person1Age == 28) {
+if (person1Age < 30) {
   console.log("Person is less than 30 years old.")
 }
 ```
@@ -199,7 +199,7 @@ Write an `if` statement that reports whether `person1Age` is less than 30 years 
 Use the following console log, when the condition is `true`: `console.log("Person is less than 30 years old and married.")`
 
 ```js
-if (person1Age == 28 && person1Profession == 'married') {
+if (person1Age < 30 && person1Profession == 'married') {
   console.log("Person is less than 30 years old and married.")
 }
 ```
@@ -234,7 +234,7 @@ Use the following console logs:
 - For `else`: `console.log('Person is more than 30 years old.')`
 
 ```js
-if (person2Age == 27) {
+if (person2Age < 30) {
   console.log('Person is less than 30 years old.')
 }
 else {
@@ -273,7 +273,7 @@ Use the following console logs:
 - `else`: `console.log('Person is more than 30 years old.')`
 
 ```js
-if (person3Age == 27) {
+if (person3Age < 30) {
   console.log('Person is less than 30 years old.')
 }
 else if (person3Age == 30) {

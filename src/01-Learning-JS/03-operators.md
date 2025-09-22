@@ -215,8 +215,22 @@ First, go back to the last chapter and grab the suite of primitives that you cre
 4. Print them all to the console with `console.log()`.
 5. Check your work, as you go, by opening the browser console with the **Inspect Element** tool.
 
-```javascript
+```js
 // Write your code in here
+let juice = 29
+let orange = 36
+let cranberry = 9
+let a = orange - juice // output is 7
+let b = juice - cranberry // output is 20
+let c = a * cranberry // output is 63
+let d = orange / cranberry // output is 4
+
+console.log(juice + orange)
+console.log(orange - cranberry)
+console.log(orange / cranberry)
+console.log(a * d)
+console.log(b / d)
+console.log(c % b)
 ```
 
 ## Submission

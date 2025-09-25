@@ -733,7 +733,7 @@ Akin to Object Arrays, D3.js has the InternMap. ***Interning*** is specific meth
 
 For example, the below InternMap considers two Date instances representing the same moment to be equal, so the environment will only store the first instance, i.e., replace the `"red"` entry with subsequent `"green"` entry. Print that out to the console and see for yourself.
 
-```javascript
+```js
 const exampleInternMap = new InternMap([
   [new Date(Date.UTC(2001, 0, 1)), "red"],
   [new Date(Date.UTC(2001, 0, 1)), "green"] // replaces previous entry
@@ -741,6 +741,8 @@ const exampleInternMap = new InternMap([
 
 // Get value at specific indexed Date() object key
 exampleInternMap.get(new Date(Date.UTC(2001, 0, 1))) // "green"
+
+console.log(exampleInternMap.get(new Date(Date.UTC(2001, 0, 1))))
 ```
 
 ### D3's InternMap() is an upgraded version of JS Map()
@@ -758,9 +760,10 @@ Ok, Date() object behavior is one big reason to use InternMaps. Additionally, In
 
 For more proof, check out both of their respective `prototype` functions in the web console. Convert this `javascript` codeblock to an executable `js` codeblock and see for yourself:
 
-```javascript
+```js
 let ogJsMap = new Map()
 let d3InternMap = new InternMap()
+
 console.log(
   "ogJsMap\n", ogJsMap
   "\nd3InternMap\n", d3InternMap

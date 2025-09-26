@@ -958,12 +958,22 @@ nc24VotersRollUpPartyAndRace.get("DEM").get("F") // Yields 4149
   Be sure to write your code in a manner aligned with how I break down the process above.
 </p>
 
-```javascript
+```js
 // Your code goes here
+let nc2024BallotRtnStsAndRace = nc2024SampleVoters.map(
+  (voter) => {
+    if (voter.ballot_rtn_status !== null) {
+    const voterRtnSts = voter.ballot_rtn_status
+    const race = voter.race
+    return {voterRtnSts, race}
+    }
+  }
+)
+.filter(Boolean)
 ```
 
-```javascript
-// Your new variable here
+```js
+nc2024BallotRtnStsAndRace
 ```
 
 ### E2. Group NC Voters By the Ballot Sent Date as an InternMap()
@@ -979,12 +989,23 @@ nc24VotersRollUpPartyAndRace.get("DEM").get("F") // Yields 4149
   Be sure to write your code in a manner aligned with how I break down the process above.
 </p>
 
-```javascript
+```js
 // Your code goes here
+const formalDateObj = utcParse("%m/%d/%y")
+
+for (const voter of nc2024SampleVoters) {
+  let ballotSendDate = formalDateObj(voter.ballot_send_dt)
+  voter.ballot_send_dt_obj = ballotSendDate
+}
+
+const nc2024BallotSendDate = d3.group(
+  nc2024SampleVoters,
+  (d) => d.ballot_send_dt_obj
+)
 ```
 
-```javascript
-// Your grouped variable here
+```js
+nc2024BallotSendDate
 ```
 
 ### E3. Group NC Voters By Age Range as an InternMap()
@@ -1003,12 +1024,26 @@ nc24VotersRollUpPartyAndRace.get("DEM").get("F") // Yields 4149
   </ol>
 </div>
 
-```javascript
+```js
 // Your code goes here
+let nc2024VoterAgeLimits = [50, 70, 90]
+
+const nc2024VoterAgeGroups = d3.group(
+  nc2024SampleVoters,
+  (d) => {
+    if (d.age > 50 && < 70) {
+      console.log("50-70 y/o")
+    }
+    if (d.age > 70 && < 90) {
+      console.log("70-90 y/o")
+    }
+  }
+)
 ```
 
-```javascript
+```js
 // Your grouped variable here
+nc2024VoterAgeGroups
 ```
 
 ### E4. Group NC Voters by Your Desired set of 2-3 Fields as an InternMap()

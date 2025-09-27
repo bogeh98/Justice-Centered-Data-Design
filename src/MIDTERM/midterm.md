@@ -1,39 +1,23 @@
-# To Be Determined
+# Processing Book Publication Data
 
 - **Name**: Beatrice Ogeh
 - **Dataset**: BooksDataset.csv
 
 ## Purpose
 
-Paragraph 1: Briefly explain your reasons for choosing the specific dataset,
-which can include any discussion about the topic and particular variables.
-
-The following given executable js codeblock that imports the one set of D3.js
-modules that you will need to use for Date() object work. You will need to
-remove the forward-slashes preceeding the backticks, since I needed to
-eascape these characters within this block.
-
-I chose to work with this dataset because 1) I love books, 2) I want to take this opportunity to practice converting strings into more standard and/or numerical values, and 3) I'm likely to work with this type of data (as opposed to quantitative/numerical data) in my own career.
+I chose to work with this dataset because (1) I love books, (2) I want to take this opportunity to practice converting strings into more standard and/or numerical values, and (3) I'm likely to work with this type of data (as opposed to quantitative/numerical data) in my own career.
 
 ```js
 import {utcParse,utcFormat} from "d3-time-format";
 ```
 
-Then, divide the notebook into meaningfully sections and subsections.
-Use the following general scheme to revise as needed.
-
-## Overview of data set
-
-In this section, be sure to make some small notes about the data and output it
-in an executable js codeblock, so you can review it on the page interactively.
-You can note its size, for instance, as well as any other notable insights
-gleaned during your first glance.
-
-Remember that this is a notebook, so you can treat it like one. `:-)`
+## Overview of Data Set
 
 Data: Publication information on a random selection of published books
+
 Size: 103,082 objects
-Categories (column names): Title, Authors, Description, Category, Publisher, Publish Date, Price
+
+Headings (column names): Title, Authors, Description, Category, Publisher, Publish Date, Price
 
 ```js
 const booksData = FileAttachment("./../data/midterm-options/books/BooksDataset.csv").csv({typed: true})
@@ -45,59 +29,90 @@ booksData
 
 ## Convert Dates
 
-Convert the dates, which are strings, into Date() objects with your own custom
-D3.js parser and any formatters. Discuss any particular choices to format the
-date data in any new ways.
-
-Again, be sure to output your newly transformed data in executable codeblocks
-for easier verification and reviewing.
+Below, I converted the "Publish Date" date strings into Date() objects. Then, I converted those Date() objects back into date strings, but in a more standard format: mm/dd/YYYY.
 
 ```js
-const formalDateParser = utcParse("%A, %B %e, %Y")
+const formalDateParser = utcParse("%A, %B %_d, %Y")
+formalDateParser(booksData["Publish Date"])
 
-const booksDataNew = formalDateParser(booksData[0]["Publish Date"])
+const booksDataNew = booksData.map(
+  (book) => {
+    book["Publish Date Abbrev"] = formalDateParser(booksData["Publish Date"])
+    return book
+  }
+)
 
-console.log(booksDataNew)
+const formatSlashDate = utcFormat("%m/%d/%Y")
+const dateObj = new Date(booksDataNew["Publish Date Abbrev"])
+
+const booksDataNew2 = booksDataNew.map(
+  (book) => {
+    book["Publish Date Num"] = formatSlashDate(dateObj)
+    return book
+  }
+)
 ```
 
 ```js
 booksDataNew
 ```
 
-## Grouping #1 - Name of grouping here
+```js
+booksDataNew2
+```
 
-Explain your plan to group the data in a particular way here, before you do so.
-At least one of the groupings should use some variation of D3's `.rollup()`, so
-you can count particular grouped properties.
+## Grouping #1 - Books/Publication Information Sorted by Category (Topic)
 
-Provide a procedure of your grouping plan in an ordered list before the codeblock:
+1. Open new `js` codeblock.
+2. Using the `d3.group()` method, declare and assign a new variable to the new grouping.
+3. Enter the parameters: the data set (`booksData`) and the function specifying which field(s) (`Category`) to group the data by.
+4. Add the new group to a new `js` codeblock to render an interactive output.
 
-1. Coding_Action_1
-2. Coding_Action_2
-3. ...
+```js
+const booksByCategoryInternMap = d3.group(
+  booksData,
+  (d) => d.Category
+)
+```
 
-Again, be sure to output your newly transformed data in executable codeblocks
-for easier verification and reviewing.
+```js
+booksByCategoryInternMap
+```
 
-## Grouping #2 - Name of grouping here
+## Grouping #2 - Authors and Titles Sorted by Book Category (Topic)
 
-Explain your plan to group the data in a particular way here, before you do so.
-At least one of the groupings should use some variation of D3's `.rollup()`, so
-you can count particular grouped properties.
+1. Open new `js` codeblock.
+2. Using the `d3.rollup()` method, declare and assign a new variable to the new grouping.
+3. Enter the parameters: the data set (`booksData`) and the function specifying which field(s) (`length`, `Category`, `Authors`, `Title`) to reduce the data to.
+4. Add the new group to a new `js` codeblock to render an interactive output.
 
-Provide a procedure of your grouping plan in an ordered list before the codeblock:
+```js
+const booksDataRollUpCategoryAuthorsAndTitle = d3.rollup(
+  booksData,
+  (D) => D.length,
+  (d) => d.Category,
+    (d) => d.Authors,
+    (d) => d.Title
+)
+```
 
-1. Coding_Action_1
-2. Coding_Action_2
-3. ...
-
-Again, be sure to output your newly transformed data in executable codeblocks
-for easier verification and reviewing.
+```js
+booksDataRollUpCategoryAuthorsAndTitle
+```
 
 ## Reflection
 
-Use the following prompt to guide your reflection about your data work:
-"What 2-3 insights and 2-3 questions did you glean from your initial work
-with the dataset?"
+**What 2-3 insights and 2-3 questions did you glean from your initial work
+with the dataset?**
 
-Use the PR-TEMPLATE prompts to reflect on the midterm experience.
+### Insights
+
+1. After reducing my data set using the d3.rollup() method, I was able to easily figure out how many books any author had published in a given category/topic. This illustrated to me how useful d3.rollup can be for narrowing down a data set to a more digestible format.
+
+2. I also realized that the two grouping methods could be especially helpful for identifying patterns within a data set that represents a arbitrary selection of data.
+
+### Questions
+
+1. The values in the `Publish Date` property all returned as `null` after I converted the date strings in my data set to Date() objects (even though, as far as I know, the format string in my date parser is correct). What is the reason for this?
+
+2. Does `.length` have to be one of the fields in a `d3.rollup`? When I left it out, it returned `undefined`.

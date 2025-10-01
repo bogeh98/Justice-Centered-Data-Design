@@ -97,12 +97,14 @@ export const oneLevelRollUpFlatMap = (data, level1Key, countKey) => {
   )
 
   // 2. Flatten back to array of objects
-  const flatTotals = colTotals.flatMap((e) => {
-    return {
-      [level1Key]: e[0],
-      [countKey]: e[1]
+  const flatTotals = colTotals.flatMap(
+    (e) => {
+      return {
+        [level1Key]: e[0], // key
+        [countKey]: e[1] // value
+      }
     }
-  })
+  )
 
   // 3. Return the sorted totals
   return flatTotals

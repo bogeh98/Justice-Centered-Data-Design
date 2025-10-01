@@ -59,8 +59,9 @@ Again, we are going to continue working with the 2024 NC absentee voter CSV file
 2. Assign the data to a variable named `ncVotersAll`.
 3. Render it to the page in a separate codeblock.
 
-```javascript
+```js
 // FileAttachment() code here assigned to `ncVotersAll`
+const ncVotersAll = FileAttachment("./../data/nc-voters/nc_absentee_mail_2024.csv").csv({typed: true})
 ```
 
 Output the data as an interactive array of objects below:
@@ -69,7 +70,7 @@ Output the data as an interactive array of objects below:
   Interactive output of full data set in <code>ncVotersAll</code>
 </p>
 
-```javascript
+```js
 // Convert to render on page
 ncVotersAll
 ```
@@ -80,7 +81,7 @@ We will be learning how to "read" large data sets with exploratory data analysis
 
 Observable has a suite of modules called **Inputs**. We're going to learn how to use [Observable's Inputs.table()](https://observablehq.com/framework/inputs/table) method to render the attached data as a table. In its most basic form, it expects a flat array of objects with properties, which is what `FileAttachment()` renders for us.
 
-```javascript
+```js
 // Most basic Inputs.table()
 Inputs.table(ncVotersAll)
 ```
@@ -132,13 +133,35 @@ Ok, now I want you to put all of those pieces together in your own `Inputs.table
 
 ![Example output table](./../assets/images/2-why-stats/02-why-stats-ex-table.png)
 
-```javascript
+```js
 // Insert your table here
 Inputs.table(
   // The array of objects
   ncVotersAll,
   {
     // enter each customizing property in this object
+    columns: [
+      "id_num", "county_desc", "race", "gender", "age",
+      "ballot_request_party", "ballot_rtn_status"
+    ],
+    rows: 25,
+    width: {
+      id_num: 90,
+      county_desc: 90,
+      gender: 40,
+      age: 20,
+      race: 90,
+      ballot_request_party: 90,
+    },
+    header: {
+      id_num: "ID",
+      county_desc: "County",
+      race: "Race",
+      gender: "Gender",
+      age: "Age",
+      ballot_request_party: "Ballot Party",
+      ballot_rtn_status: "Ballot Status",
+    }            
   }
 )
 ```
@@ -149,13 +172,13 @@ To be honest, we should never really drop that much data into a table. Nobody wa
 
 Also, as we move through this section of the book, we need to cultivate a critical awareness about how numbers, calculation, and other data types are never removed from the context of their collection and use. For this reason, we will be learning about data and statistical work with a wholistic socially just approach in mind. To help us accomplish this aim, we will be using a running scenario that involves working with the 2024 North Carolina general election data for absentee ballots. We will specifically take on the following scenario and role as a communicator working at a nonprofit called **Protect Democracy**:
 
-> You work for a nonpartisan, nonprofit called **Protect Democracy** (PD) as an analyst and writer. One of PD's missions is to ensure free an fair elections. They want to run a series of stories about mail-in voting, and they recalled how, during the 2020 election, NC had racial disparity with regards to whose ballots were being rejected ([See 538 story](https://fivethirtyeight.com/features/north-carolina-is-already-rejecting-black-voters-mail-in-ballots-more-often-than-white-voters/)). Consequently, they want you to look into any potential rejected ballot issues that might have occurred for mail-in voters in NC during the 2024 election.
+> You work for a nonpartisan nonprofit called **Protect Democracy** (PD) as an analyst and writer. One of PD's missions is to ensure free and fair elections. They want to run a series of stories about mail-in voting, and they recalled how, during the 2020 election, NC had racial disparity with regards to whose ballots were being rejected ([See 538 story](https://fivethirtyeight.com/features/north-carolina-is-already-rejecting-black-voters-mail-in-ballots-more-often-than-white-voters/)). Consequently, they want you to look into any potential rejected ballot issues that might have occurred for mail-in voters in NC during the 2024 election.
 
 ### About the NC absentee voter ballot data, and its provenance
 
-Before we move forward, it's a good idea to understand the data with any available external resources to uderstand its provenance. ***Provenance*** is essentially understanding the original context of people, places, intentions, and definitions of the dataset.
+Before we move forward, it's a good idea to understand the data with any available external resources to understand its provenance. ***Provenance*** is essentially understanding the original context of people, places, intentions, and definitions of the dataset.
 
-Perhaps many of us, myself included, were not immediately knowledgable about this subject or process of voting via mail. Here are a couple of primer points that I have learned through some initial reading of the archived 2024 version of NC's website about mail-in/absentee voting ([see ncsbe.gov on archive.org](https://web.archive.org/web/20240108154755/https://www.ncsbe.gov/voting/vote-mail)):
+Perhaps many of us, myself included, were not immediately knowledgeable about this subject or process of voting via mail. Here are a couple of primer points that I have learned through some initial reading of the archived 2024 version of NC's website about mail-in/absentee voting ([see ncsbe.gov on archive.org](https://web.archive.org/web/20240108154755/https://www.ncsbe.gov/voting/vote-mail)):
 
 - The due date to request a ballot is by 5PM the Tuesday before the election.
 - Voters can request a mail-in/absentee ballot either online or by filling out a form and returning it in the mail.
@@ -165,17 +188,21 @@ To learn more about the dataset itself, you can start with the provided README f
 
 Finally, inside of the `/src/data/nc-voters/provenance/` folder, you can also review the PDF forms voters must use to request a mail-in/absentee ballot--I've included a range of different versions between 2020 and 2024.
 
-**Question**: After reviewing the above information, how would a SJ ethic inform your intiial understanding of the data, its collected values, and its context? List out in other information or questions that you sense might be missing about the data.
+**Question**: After reviewing the above information, how would a SJ ethic inform your initial understanding of the data, its collected values, and its context? List out other information or questions that you sense might be missing about the data.
 
-ENTER_YOUR_RESPONSE_HERE
+**Answer**: Upon reviewing the data/documents with an SJ ethic in mind, I noticed that the absentee/mail-in ballot request form asks for personal information that not everyone can provide (e.g., street address, federal/state identification). Additionally, absentee voters in NC must identify a notary public or 1-2 witnesses to validate their ballot. These barriers may exist to keep certain populations from voting as freely.
 
 **Question**: Based on the case scenario as a communicator at Protect Democracy, and a SJ ethic in mind, what questions, i.e., angles, do you think may be helpful to meet the needs of your situation. Discuss any columns/fields that you are surprised about or spark any curiosities, and create a list of questions they spark in you.
 
-ENTER_YOUR_RESPONSE_HERE
+**Answer**: Some questions I think it would be helpful to consider:
+- Does the notarization requirement impact absentee voter turnout?
+- What options exist for people who want to absentee vote but lack secure housing? Or undocumented folks?
+
+I was surprised to find that the `gender` field in the data set includes an option beyond "M" and "F" (though I'm not sure what "U" represents).
 
 **Question**: What can you understand about the `ballot_rtn_status` column? In other words, what types of values are possible?
 
-ENTER_YOUR_RESPONSE_HERE
+**Answer**: As far as I can tell, the possible values for `ballot_rtn_status` are `accepted`, `spoiled`/`spoiled-ev`, and `" "` (blank).
 
 ## 2.3.4 Calculate Absolute Grouped Frequencies with RFS Method
 
@@ -268,12 +295,21 @@ const afStatusByRace = d3.rollups(
 )
 ```
 
+```js
+const afStatusByRace = d3.rollups(
+  ncVotersAll,
+  v => v.length, // length of leaf node: ballot_rtn_status
+  d => d.race,
+    d => d.ballot_rtn_status
+)
+```
+
 <p class="codeblock-caption">
   Interactive output of rolled up <code>afStatusByRace</code>:
 </p>
 
 <!-- afStatusByRace output -->
-```javascript
+```js
 // Convert to render on page
 afStatusByRace
 ```
@@ -358,25 +394,30 @@ In this second video, I explain the code inside of the custom `oneLevelRollUpFla
 
 Ok, now that you have watched the above video about the `oneLevelRollUpFlatMap()` function. Import it from the `./utils/utils.js` file in the codeblock below.
 
-```javascript
+```js
 // Convert me and import oneLevelRollUpFlatMap()
-import {PUT_ANY_FUNCTIONS_IN_HERE, SEPARATE_MORE_THAN_ONE, WITH_COMMAS} from "enter/path/here.js"
-
+// import {PUT_ANY_FUNCTIONS_IN_HERE, SEPARATE_MORE_THAN_ONE, WITH_COMMAS} from "enter/path/here.js"
+import {oneLevelRollUpFlatMap} from "./utils/utils.js"
 ```
 
 Now, see if it worked!
 
-Use the imported function in the below codeblock to rollup and flatten `ncVotersAll` by (1) `race` and (2) `ballot_rtn_status`.
+Use the imported function in the below codeblock to rollup and flatten `ncVotersAll` by `race`.
 
-```javascript
+```js
 // Convert and use `oneLevelRollUpFlatMap()` on `ncVotersAll`
-const byRaceAndBallotStatus = ADD_FUNCTION_HERE
+// const byRaceAndBallotStatus = ADD_FUNCTION_HERE
+const byRace = oneLevelRollUpFlatMap(
+  ncVotersAll,
+  "race",
+  "af"
+)
 ```
 
 Ok, let's see if `byRaceAndBallotStatus` shows up here by rendering it to the page.
 
-```javascript
-byRaceAndBallotStatus
+```js
+byRace
 ```
 
 <div class="error-caption">

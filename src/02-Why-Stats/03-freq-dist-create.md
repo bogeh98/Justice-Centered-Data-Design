@@ -414,7 +414,7 @@ const byRace = oneLevelRollUpFlatMap(
 )
 ```
 
-Ok, let's see if `byRaceAndBallotStatus` shows up here by rendering it to the page.
+Ok, let's see if `byRace` shows up here by rendering it to the page.
 
 ```js
 byRace
@@ -433,12 +433,22 @@ byRace
 
 Ok, now you try this custom function with a different variable from the dataset.
 
-```javascript
-// Convert and create your own one-level grouping
+```js
+import {oneLevelRollUpFlatMap, twoLevelRollUpFlatMap, getUniquePropListBy} from "./utils/utils.js"
 ```
 
-```javascript
+```js
+// Convert and create your own one-level grouping
+const byZipCode = oneLevelRollUpFlatMap(
+  ncVotersAll,
+  "voter_zip",
+  "af"
+)
+```
+
+```js
 // Convert and output your variable here
+byZipCode
 ```
 
 ## E6. Import and use `twoLevelRollUpFlatMap()` on `ncVotersAll`
@@ -457,12 +467,19 @@ In this video, follow along as I explain the code for the `twoLevelRollUpFlatMap
 
 After you have watched the above video, it is time for you to try this custom function with the two example variables used in the our running angle.
 
-```javascript
+```js
 // Convert and create your own two-level grouping
+const byGenderAndAge = twoLevelRollUpFlatMap(
+  ncVotersAll,
+  "gender",
+  "age",
+  "af"
+)
 ```
 
-```javascript
+```js
 // Convert and output your variable here
+byGenderAndAge
 ```
 
 ## 2.3.7 RFS 3. Sum it up with D3's .sum()!
@@ -545,6 +562,23 @@ Follow along with me in the video below to learn how to create a custom function
 <!-- Your Reducer Functions -->
 ```javascript
 // Convert and create your own reducer functions akin to "ACCEPTED" vs "REJECTED"
+const getAcceptedBallots = (d) => {
+  if (d.ballot_rtn_status != null && d.ballot_rtn_status.startsWith("ACCEPTED") == true) {
+    return d.af
+  }
+  else {
+    return 0
+  }
+}
+
+const getRejectedBallots = (d) => {
+  if (d.ballot_rtn_status != null && d.ballot_rtn_status.startsWith("ACCEPTED") == false) {
+    return d.af
+  }
+  else {
+    return 0
+  }
+}
 ```
 
 <!-- Call and use sumUpWithReducerTests() -->
@@ -554,6 +588,9 @@ Follow along with me in the video below to learn how to create a custom function
  * Be sure to review the utils.js file, so you
  * can see the parameters needed for the function.
 **/
+const reducerProps = ["WHITE", "BLACK or AFRICAN AMERICAN"]
+
+const reducerFuncs =
 ```
 
 <p class="codeblock-caption">

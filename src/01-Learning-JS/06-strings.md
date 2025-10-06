@@ -230,7 +230,13 @@ Ok, last exercise! Complete the following steps to create a new array that only 
 2. In a second codeblock, output the new array to verify your work.
 
 ```js
-let hyphenatedWords = vonnSplit.filter(vonnSplit => vonnSplit.includes("-"))
+let hyphenatedWords = []
+
+for (const word of vonnSplit) {
+  if (word.includes("-")) {
+    hypenatedWords.push(word)
+  }
+}
 ```
 
 ```js

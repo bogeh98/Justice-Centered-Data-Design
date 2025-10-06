@@ -1031,11 +1031,11 @@ let nc2024VoterAgeLimits = [50, 70, 90]
 const nc2024VoterAgeGroups = d3.group(
   nc2024SampleVoters,
   (d) => {
-    if (d.age > 50 && < 70) {
-      console.log("50-70 y/o")
+    if (d.age > 50 && d.age < 70) {
+      return "50-70 y/o"
     }
-    if (d.age > 70 && < 90) {
-      console.log("70-90 y/o")
+    else if (d.age > 71 && d.age < 90) {
+      return "70-90 y/o"
     }
   }
 )

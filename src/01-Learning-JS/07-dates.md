@@ -46,7 +46,7 @@ Let's practice making datetime objects with Temporal. Open your browser's consol
 
 ### How to get the current date and time in the local time zone?
 
-```javascript
+```js
 /**
  * Get the current date in JavaScript
  * This is a popular question on Stack Overflow for dates in JS
@@ -61,7 +61,9 @@ const dateSuperNow = Temporal.Now.plainDateTimeISO()
 ```
 
 ```js
-const dateSuperNow = Temporal.Now.plainDateTimeISO()
+dateNow
+
+console.log(dateNow)
 ```
 
 Make sure to review just how much information -- ***data*** -- is stored, as well as how many methods are available with every single Temporal object.
@@ -72,6 +74,8 @@ Make sure to review just how much information -- ***data*** -- is stored, as wel
 
 ```js
 dateSuperNow
+
+console.log(dateSuperNow)
 ```
 
 <p class="codeblock-caption">
@@ -206,6 +210,10 @@ import * from "d3-time-format";
 ```
 
 Now, since it has been imported into our programming environment, we can use any selected or all of the methods and functions provided in the code library. Below, we learn how to use two very common methods: `utcParse` and `utcFormat`.
+
+```js
+import * from "d3-time-format";
+```
 
 ### d3.utcParse(): Convert strings into dates
 
@@ -358,6 +366,8 @@ let nc2024SampleVoters = [
 
 ```js
 nc2024SampleVoters
+
+console.log(nc2024SampleVoters)
 ```
 
 ### E1. d3.utcParse(): Convert string dates to Date() objects
@@ -371,11 +381,21 @@ Here are some tips to consider as you complete this exercise.
 <p class="tip"><strong>Isolate interested parts of data</strong>: If dates are important to the inquiry, remember that the dates are stored as Strings in the following format: <code>"10/24/2024"</code>, i.e.,<code>"mm/dd/YYYY"</code>.</p>
 
 <!-- E1 -->
-```javascript
+```js
 // Convert and code here
+const slashDateFormat = utcFormat("%m/%d/%Y")
+slashDateFormat(nc2024SampleVoters.ballot_req_dt)
+
+const ballotsWithDateObjs = nc2024SampleVoters.map(
+  (ballot) => {
+    // console.log(ballot)
+    ballot.ballot_req_dt_obj = slashDateFormat(ballot.ballot_req_dt)
+    return ballot
+  }
+)
 ```
 
-```javascript
+```js
 // Convert and output
 ballotsWithDateObjs
 ```
@@ -385,11 +405,20 @@ ballotsWithDateObjs
 **Goal**: Use `.map()` to loop through the updated array of objects, `ballotsWithDateObjs`, and create a new array of objects called `updatedBallots`. In the new `updatedBallots`, use `d3.utcFormat()` to assign a converted and formatted version of `ballot_req_dt_obj` with the following date ***format***: Wed., January 27, 1981.
 
 <!-- E2 -->
-```javascript
+```js
 // Convert and code here
+const formalDateFormat = utcFormat("%a, %b %d %Y")
+formalDateFormat(ballotsWithDateObjs.ballot_req_dt)
+
+const updatedBallots = ballotsWithDateObjs.map(
+  (ballot) => {
+    ballot.ballot_req_dt_obj = formalDateFormat(ballot.ballot_req_dt_obj)
+    return ballot
+  }
+)
 ```
 
-```javascript
+```js
 // Convert and output updatedBallots here
 updatedBallots
 ```

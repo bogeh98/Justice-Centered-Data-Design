@@ -229,14 +229,14 @@ Ok, last exercise! Complete the following steps to create a new array that only 
 1. In a first codeblock, declare a new array called `hyphenatedWords`. Then, push only hyphenated words into it.
 2. In a second codeblock, output the new array to verify your work.
 
-// This yields the same output.
+```js
 let hyphenatedWords = []
+
 for (const word of vonnSplit) {
   if (word.includes("-")) {
-    hyphenatedWords.push(word)
+    hypenatedWords.push(word)
   }
 }
-let hyphenatedWords = vonnSplit.filter(vonnSplit => vonnSplit.includes("-"))
 ```
 
 ```js

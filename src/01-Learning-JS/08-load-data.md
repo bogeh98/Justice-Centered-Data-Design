@@ -243,14 +243,16 @@ In this case, load the following CSV file: `nc_absentee_mail_2024.csv`.
 
 ```js
 // Your FileAttachment() code goes here
-const ncAbsenteeBallotData2024 = FileAttachment("./../data/nc-voters/nc_absentee_mail_2024.csv").csv({typed: true})
+const ncAbsenteeBallotData2024 = FileAttachment("./../data/nc-voters/nc_absentee_mail_2024.csv")
 ```
 
 ```js
 // Your other code with your variable goes here
 ncAbsenteeBallotData2024
 
-console.log(ncAbsenteeBallotData2024[0])
+console.log(ncAbsenteeBallotData2024.name)
+
+console.log(ncAbsenteeBallotData2024.size)
 ```
 
 Make sure that you verify the logs are there!

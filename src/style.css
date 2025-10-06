@@ -137,7 +137,6 @@ p, table, figure, figcaption, .katex-display, ul, ol, code, pre, body {
 }
 
 /* ANCHORS */
-
 a, .card a {
   text-decoration:none !important;
   color:var(--primaryColor);
@@ -293,15 +292,6 @@ blockquote {
 .cite_small {
   font-size: 0.8rem;
 }
-
-/* CUSTOM CODE FORMATTING */
-
-/* Overwrite Highlight.js defaults */
-/* .observablehq-pre-container {
-  & .hljs {
-    background: white !important;
-  }
-} */
 
 /* LISTS */
 
@@ -1314,35 +1304,7 @@ video {
   }
 }
 
-
-/* PRE / Code */
-pre,
-.observablehq-pre-container,
-.observablehq--block {
-  background-color: var(--codeBlock);
-  border-radius: 4px;
-  margin: 3rem auto;
-  max-width: 800px;
-  min-height: 100%;
-  padding: 0;
-  overflow-x: auto;
-  box-sizing: border-box;
-  box-shadow: 1px 2px 3px -1px var(--foregroundColor);
-
-  /* SVG Chart */
-  & > svg,
-  & > figure > svg {
-    margin: auto;
-  }
-}
-.observablehq-pre-container {
-  & pre {
-    padding-right: 0;
-    margin: 0;
-    max-width: none;
-    overflow-x: unset;
-  }
-}
+/* NOTES & TIP BOXES */
 .note, .tip, .warning, .caution, .example {
   margin: 2rem auto;
 }
@@ -1357,11 +1319,18 @@ pre,
   background-color: var(--theme-background-alt);
 
   &::before {
-    content: "EXAMPLE";
+    content: "Example";
     color: var(--theme-foreground-muted);
     display: block;
     margin-bottom: 1rem;
     font-weight: 700;
+  }
+
+  /* Example Output */
+  &.code-output {
+    & > img {
+      max-width: 350px;
+    }
   }
 }
 .question {
@@ -1422,7 +1391,7 @@ pre,
   }
 }
 .codeblock-caption {
-  margin-bottom: -2.5rem;
+  margin-bottom: 1.5rem;
   padding: 0;
   font-size: 1rem;
   counter-increment: codeblock; /* increment by 1 */
@@ -1437,6 +1406,11 @@ pre,
     background-color: var(--accent2Color);
     color: white;
     content: "CB " counter(codeblock) ": ";
+  }
+
+  /* IMAGES */
+  & > img {
+    max-width: 300px;
   }
 }
 .figure-caption {
@@ -1481,6 +1455,27 @@ pre,
 .observablehq--error .observablehq--inspect {
   margin: 2rem auto;
   max-width: 640px;
+}
+
+/* CUSTOM CODE FORMATTING */
+pre,
+.observablehq-pre-container,
+.observablehq--block {
+  background-color: var(--codeBlock);
+  border-radius: 4px;
+  margin: 3rem auto;
+  max-width: 800px;
+  min-height: 100%;
+  padding: 0;
+  overflow-x: auto;
+  box-sizing: border-box;
+  box-shadow: 1px 2px 3px -1px var(--foregroundColor);
+
+  /* SVG Chart */
+  & > svg,
+  & > figure > svg {
+    margin: auto;
+  }
 }
 
 /* Interactive pre codeblocks */

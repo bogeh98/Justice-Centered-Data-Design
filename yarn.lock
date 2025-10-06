@@ -747,6 +747,13 @@ commondir@^1.0.1:
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==
 
+compromise-stats@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/compromise-stats/-/compromise-stats-0.1.1.tgz#ca5a99ecd04521f99f3e63f3a6d03d072608e933"
+  integrity sha512-3tbdgKed2yo/KNNqWLgqMtAdns0dTS+HPf7yE0THDUr4U2ZMj9NL34zVsRNUhEd0Q9SiRYcUJmbmhnUGjI+apw==
+  dependencies:
+    efrt "^2.5.0"
+
 compromise@^14.14.4:
   version "14.14.4"
   resolved "https://registry.yarnpkg.com/compromise/-/compromise-14.14.4.tgz#30c4fc934723a60bf65c9dcb4b7312b64a6cb027"
@@ -1155,7 +1162,7 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
-efrt@2.7.0:
+efrt@2.7.0, efrt@^2.5.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/efrt/-/efrt-2.7.0.tgz#8b021e69f75cfeed3f81ee058aa0c78265793324"
   integrity sha512-/RInbCy1d4P6Zdfa+TMVsf/ufZVotat5hCw3QXmWtjU+3pFEOvOQ7ibo3aIxyCJw2leIeAMjmPj+1SLJiCpdrQ==
@@ -1432,7 +1439,7 @@ he@^1.2.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
-highlight.js@^11.11.1, highlight.js@^11.8.0:
+highlight.js@^11.8.0:
   version "11.11.1"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.11.1.tgz#fca06fa0e5aeecf6c4d437239135fabc15213585"
   integrity sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==
@@ -2456,6 +2463,11 @@ text-decoder@^1.1.0:
   integrity sha512-3/o9z3X0X0fTupwsYvR03pJ/DjWuqqrfwBgTQzdWDiQSm9KitAyz/9WqsT2JQW7KV2m+bC2ol/zqpW37NHxLaA==
   dependencies:
     b4a "^1.6.4"
+
+tiny-tfidf@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/tiny-tfidf/-/tiny-tfidf-0.9.1.tgz#7a63f0c121d2742d20f281db4c7c00098b274260"
+  integrity sha512-KfXj7aHwpHWtecGskoC6TIgAy+AFT8ZyjSLDHFTbhlK29RQL+77xH1ZbUSp1mTe7Y+/Ox3GccvynoNUBWJHK3A==
 
 toidentifier@1.0.1:
   version "1.0.1"

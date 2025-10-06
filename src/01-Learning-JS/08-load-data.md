@@ -223,7 +223,7 @@ Goal: Demonstrate your understanding of the CSV file format by creating a mini C
 Use the empty codeblock below.
 
 ```javascript
-genre, artist, song
+genre,artist,song
 rock, Nirvana, "In Bloom"
 pop, Lady Gaga, "Bad Romance"
 funk, Funkadelic, "Can You Get to That"

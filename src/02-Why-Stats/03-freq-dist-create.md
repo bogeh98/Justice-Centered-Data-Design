@@ -397,7 +397,7 @@ Ok, now that you have watched the above video about the `oneLevelRollUpFlatMap()
 ```js
 // Convert me and import oneLevelRollUpFlatMap()
 // import {PUT_ANY_FUNCTIONS_IN_HERE, SEPARATE_MORE_THAN_ONE, WITH_COMMAS} from "enter/path/here.js"
-import {oneLevelRollUpFlatMap} from "./utils/utils.js"
+import {oneLevelRollUpFlatMap, twoLevelRollUpFlatMap, getUniquePropListBy} from "./utils/utils.js"
 ```
 
 Now, see if it worked!
@@ -432,10 +432,6 @@ byRace
 ## E5. Create a new one level grouping
 
 Ok, now you try this custom function with a different variable from the dataset.
-
-```js
-import {oneLevelRollUpFlatMap, twoLevelRollUpFlatMap, getUniquePropListBy} from "./utils/utils.js"
-```
 
 ```js
 // Convert and create your own one-level grouping

@@ -75,7 +75,7 @@ stringEx[1] // gives value of "o"
 
 Try out the following common methods for strings located in the table below. Start by defining the variable, `str1` below in your browser's console.
 
-```
+```js
 // Running string example
 let str1 = "Cat In The Hat"
 ```
@@ -129,8 +129,9 @@ vonnegut
 
 Let's start simple. Output the length of the String, `vonnegut`, in a `js` codeblock below.
 
-```javascript
+```js
 // Convert me to a js block
+vonnegut.length // 14981
 ```
 
 ### E2. Replace parts of a String
@@ -147,21 +148,28 @@ If you review the String, you will notice how there are section breaks represent
     </div>
 4. In the fourth codeblock, output the new variable, `vonnegutNoSBDQ`, to verify if it worked.
 
-```javascript
+```js
 // Convert me to a js block and complete #1
+let vonnegutNoSB = vonnegut.replaceAll("       *       *       *       *       *", "")
 ```
 
-```javascript
+```js
 // Convert me to a js block and complete #2
+vonnegutNoSB
+
+console.log(vonnegutNoSB)
 ```
 
-```javascript
+```js
 // Convert me to a js block and complete #3
+let vonnegutClean = vonnegutNoSB.replaceAll("\"", "").replaceAll("\'", "").replaceAll(",", "").replaceAll(".", "").replaceAll("?", "").replaceAll(";", "").replaceAll("--", " ")
 ```
 
-```javascript
+```js
 // Convert me to output the grand finale!
-vonnegutNoSBDQ
+vonnegutClean
+
+console.log(vonnegutClean)
 ```
 
 ### E3. Same thing, but better method with a for loop
@@ -172,12 +180,26 @@ Ok, those chains were ridiculous, right? Below, complete the same outcome, but u
   Put those desired marks to replace in an Array. You will also need to write a conditional statement to handle the <code>--</code> differently.
 </p>
 
-```javascript
+```js
 // Convert me and use a for loop to remove all desired punctuation
+let puncsToRemove = ["\"", "\'", ",", ".", "?", ";", "--"]
+let vonnegutNoPuncs = vonnegutNoSB
+
+for (const puncs of puncsToRemove) {
+  if (puncs === "--") {
+    vonnegutNoPuncs = vonnegutNoPuncs.replaceAll(puncs, " ")
+  }
+  else {
+    vonnegutNoPuncs = vonnegutNoPuncs.replaceAll(puncs, "")
+  }
+}
 ```
 
-```javascript
+```js
 // Convert me and output the new string, vonnegutNoPuncs, here
+vonnegutNoPuncs
+
+console.log(vonnegutNoPuncs)
 ```
 
 ### E4. Split the String into an Array of Strings
@@ -186,12 +208,16 @@ Sometimes, we need to isolate parts of a text for analysis by splitting it into 
 
 Create an array of strings of Vonnegut's story as a new variable called `vonnSplit`. Do so by splitting the newly cleaned String, `vonnegutNoPuncs`, with an empty single space (`" "`).
 
-```javascript
+```js
 // Convert me to a js block and complete the exercise
+let vonnSplit = vonnegutNoPuncs.split(" ")
 ```
 
-```javascript
+```js
 // Convert me to a js block and output `vonnSplit`
+vonnSplit
+
+console.log(vonnSplit)
 ```
 
 ### E5. Create array of all hyphenated words
@@ -203,9 +229,25 @@ Ok, last exercise! Complete the following steps to create a new array that only 
 1. In a first codeblock, declare a new array called `hyphenatedWords`. Then, push only hyphenated words into it.
 2. In a second codeblock, output the new array to verify your work.
 
+// This yields the same output.
+let hyphenatedWords = []
+for (const word of vonnSplit) {
+  if (word.includes("-")) {
+    hyphenatedWords.push(word)
+  }
+}
+let hyphenatedWords = vonnSplit.filter(vonnSplit => vonnSplit.includes("-"))
+```
+
+```js
+hyphenatedWords
+
+console.log(hyphenatedWords)
+```
+
 **Question**: What oddities do you notice about the outcome? Below, explain what you suggest is happenning, and what you would do to resolve the issue with isolating a better list of hyphenated words.
 
-ENTER_YOUR_RESPONSE_HERE
+**Answer**: I noticed that the some of the items (i.e., hyphenated words) include the characters \r\n, which represent a line break. To clean the list, I would use removeAll like this: "hyphenatedWords.removeAll("\r\n").
 
 ## Submission
 

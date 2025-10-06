@@ -383,13 +383,11 @@ Here are some tips to consider as you complete this exercise.
 <!-- E1 -->
 ```js
 // Convert and code here
-const slashDateFormat = utcFormat("%m/%d/%Y")
-slashDateFormat(nc2024SampleVoters.ballot_req_dt)
+const slashDateParser = utcParse("%m/%d/%Y")
 
 const ballotsWithDateObjs = nc2024SampleVoters.map(
   (ballot) => {
-    // console.log(ballot)
-    ballot.ballot_req_dt_obj = slashDateFormat(ballot.ballot_req_dt)
+    ballot.ballot_req_dt_obj = slashDateParser(ballot.ballot_req_dt)
     return ballot
   }
 )
@@ -408,7 +406,6 @@ ballotsWithDateObjs
 ```js
 // Convert and code here
 const formalDateFormat = utcFormat("%a, %b %d %Y")
-formalDateFormat(ballotsWithDateObjs.ballot_req_dt)
 
 const updatedBallots = ballotsWithDateObjs.map(
   (ballot) => {

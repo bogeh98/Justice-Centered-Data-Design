@@ -397,7 +397,7 @@ Ok, now that you have watched the above video about the `oneLevelRollUpFlatMap()
 ```js
 // Convert me and import oneLevelRollUpFlatMap()
 // import {PUT_ANY_FUNCTIONS_IN_HERE, SEPARATE_MORE_THAN_ONE, WITH_COMMAS} from "enter/path/here.js"
-import {oneLevelRollUpFlatMap, twoLevelRollUpFlatMap, getUniquePropListBy} from "./utils/utils.js"
+import {oneLevelRollUpFlatMap, twoLevelRollUpFlatMap, getUniquePropListBy, sumUpWithReducerTests} from "./utils/utils.js"
 ```
 
 Now, see if it worked!
@@ -556,7 +556,7 @@ Follow along with me in the video below to learn how to create a custom function
 </video>
 
 <!-- Your Reducer Functions -->
-```javascript
+```js
 // Convert and create your own reducer functions akin to "ACCEPTED" vs "REJECTED"
 const getAcceptedBallots = (d) => {
   if (d.ballot_rtn_status != null && d.ballot_rtn_status.startsWith("ACCEPTED") == true) {
@@ -577,6 +577,20 @@ const getRejectedBallots = (d) => {
 }
 ```
 
+```js
+const reducerProps = ["WHITE", "BLACK or AFRICAN AMERICAN"]
+const reducerFuncs = [getAcceptedBallots, getRejectedBallots]
+
+const sumAcceptedRejectedBallotsByRace = sumUpWithReducerTests(
+  reducerFuncs,
+  reducerProps,
+  ncVotersAll,
+  "race",
+  "ballot_rtn_status",
+  "af"
+)
+```
+
 <!-- Call and use sumUpWithReducerTests() -->
 ```javascript
 /**
@@ -584,9 +598,10 @@ const getRejectedBallots = (d) => {
  * Be sure to review the utils.js file, so you
  * can see the parameters needed for the function.
 **/
-const reducerProps = ["WHITE", "BLACK or AFRICAN AMERICAN"]
-
-const reducerFuncs =
+const reducerFuncs = [
+  {type: "ACCEPTED", func: getAcceptedBallots},
+  {type: "REJECTED", func: getRejectedBallots}
+  ]
 ```
 
 <p class="codeblock-caption">
@@ -594,8 +609,8 @@ const reducerFuncs =
 </p>
 
 <!-- Your Reducer Functions -->
-```javascript
-// Convert and output your summed up data
+```js
+sumAcceptedRejectedBallotsByRace
 ```
 
 ## E8. Tabulated absolute frequencies of rejected ballots per race

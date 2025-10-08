@@ -132,8 +132,7 @@ export const twoLevelRollUpFlatMap = (data, level1Key, level2Key, countKey) => {
   )
 
   // 2. Flatten 1st grouped level back to array of objects
-  const flatTotals = colTotals.flatMap(
-    (l1Elem) => {
+  const flatTotals = colTotals.flatMap((l1Elem) => {
 
     // 2.1 Assign level 1 key
     let l1KeyValue = l1Elem[0]
@@ -239,12 +238,14 @@ export const sumUpWithReducerTests = (reducerFunctions, reducerProperties, data,
  *     third level.
 **/
 
+export const threeLevelRollUpFlatMap = (data, level1Key, level2Key, level3key, countKey) => {
+
   const colTotals = rollups(
     data,
     (v) => v.length, //Count length of leaf node
     (d) => d[level1Key], //Accessor at 1st level
       (d) => d[level2Key], //Accessor at 2nd level
-      (d) => d[level23ey] //Accessor at 3rd level
+      (d) => d[level2Key] //Accessor at 3rd level
   )
 // 2.0 Flatten 1st grouped level
   const flatTotals = colTotals.flatMap(
@@ -268,17 +269,17 @@ export const sumUpWithReducerTests = (reducerFunctions, reducerProperties, data,
       return {
         [level1Key]: l1KeyValue,
         [level2Key]: l2KeyValue,
-        [level3Key]: l3KeyValue,
+        [level3key]: l3KeyValue,
         [countKey]: l3Elem[1]
       }
     })
 
-        return flatLevels
+      return flat2Levels
+    })
+
+      return flatLevels
   })
 
   // 3. Return the sorted totals
     return flatTotals
   }
-
-  return flat2Levels
-}

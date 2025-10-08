@@ -10,6 +10,7 @@
  * manually import all of our modules.
 **/ 
 import {ascending,descending,sum,rollup,rollups} from "d3-array";
+import { json } from "d3-fetch";
 import {utcParse,utcFormat} from "d3-time-format";
 
 // Add Your Date Parsers & Formatters Below
@@ -97,12 +98,14 @@ export const oneLevelRollUpFlatMap = (data, level1Key, countKey) => {
   )
 
   // 2. Flatten back to array of objects
-  const flatTotals = colTotals.flatMap((e) => {
-    return {
-      [level1Key]: e[0],
-      [countKey]: e[1]
+  const flatTotals = colTotals.flatMap(
+    (e) => {
+      return {
+        [level1Key]: e[0], // key
+        [countKey]: e[1] // value
+      }
     }
-  })
+  )
 
   // 3. Return the sorted totals
   return flatTotals
@@ -235,3 +238,48 @@ export const sumUpWithReducerTests = (reducerFunctions, reducerProperties, data,
  *     third level.
 **/
 
+export const threeLevelRollUpFlatMap = (data, level1Key, level2Key, level3key, countKey) => {
+
+  const colTotals = rollups(
+    data,
+    (v) => v.length, //Count length of leaf node
+    (d) => d[level1Key], //Accessor at 1st level
+      (d) => d[level2Key], //Accessor at 2nd level
+      (d) => d[level2Key] //Accessor at 3rd level
+  )
+// 2.0 Flatten 1st grouped level
+  const flatTotals = colTotals.flatMap(
+    (l1Elem) => {
+
+      // 2.1 Assign level 1 key
+    let l1KeyValue = l1Elem[0]
+
+    // 2.2 Flatten 2nd grouped level
+    const flatLevels = l1Elem[1].flatMap((l2Elem) => {
+
+      // 2.2.1 Assign level 2 key
+      let l2KeyValue = l2Elem[0]
+
+    // 2.3 Flatten 3rd grouped level
+    const flat2Levels = l2Elem[1].flatMap((l3Elem) => {
+
+      // 2.3.1 Assign level 3 key
+      let l3KeyValue = l3Elem[0]
+
+      return {
+        [level1Key]: l1KeyValue,
+        [level2Key]: l2KeyValue,
+        [level3key]: l3KeyValue,
+        [countKey]: l3Elem[1]
+      }
+    })
+
+      return flat2Levels
+    })
+
+      return flatLevels
+  })
+
+  // 3. Return the sorted totals
+    return flatTotals
+  }

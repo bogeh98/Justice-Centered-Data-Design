@@ -93,8 +93,12 @@ Overall keep that rule-of-thumb in mind as you practice writing functions.
 Use D3.js `FileAttachment()` method below in VS Code. Remember that you'll need to write a relative path as a String parameter that helps the computer find where the CSV file is in relation to this particular page's file in the project tree.
 
 <!-- Attach sampled NC voter data -->
-```javascript
-// Convert to `js` codeblock and attach sampled NC voter data file: nc_absentee_mail_2024_n20000.csv
+```js
+const nc2024AbsenteeVoterData = FileAttachment("./../data/nc-voters/nc_absentee_mail_2024_n20000.csv").csv({typed: true})
+```
+
+```js
+nc2024AbsenteeVoterData
 ```
 
 ## E2. Convert String dates to Date() objects
@@ -109,12 +113,26 @@ First outline your procedure with steps below.
 
 Now, code!
 
-```javascript
+```js
 // Your function code goes here
+import {utcParse,utcFormat} from "d3-time-format";
+
+const parseMDYSlash = utcParse("%m/%d/%y")
+
+const myFunc = (ballot_req_dt, ballot_send_dt, ballot_send_dt) => {
+return nc2024AbsenteeVoterData.map(
+  (ballot) => {
+    const dateObj = 
+  }
+)
+}
+
+const updatedData = myFunc(nc2024AbsenteeVoterData)
 ```
 
-```javascript
+```js
 // Your use of the function code goes here
+
 ```
 
 <p class="codeblock-caption">
@@ -123,6 +141,9 @@ Now, code!
 
 ```javascript
 // Convert and output variable here
+    ballot.ballot_req_dt_obj = parseMDYSlash(ballot.ballot_req_dt);
+    ballot.ballot_send_dt_obj = parseMDYSlash(ballot.ballot_send_dt);
+    ballot.ballot_rtn_dt_obj = parseMDYSlash(ballot.ballot_rtn_dt);
 ```
 
 ## E3. Create Your Own Function (with Conditions)!
@@ -139,6 +160,7 @@ Now, code!
 
 ```javascript
 // Your function code goes here
+const newDataSet = myFunc(nc2024AbsenteeVoterData)
 ```
 
 ```javascript

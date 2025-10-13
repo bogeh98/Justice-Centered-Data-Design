@@ -1052,16 +1052,22 @@ nc2024VoterAgeGroups
 
 First outline your procedure with steps below. Then, use the JS codeblock to perform your grouping as a D3.js `InternMap()`.
 
-1. Enter step 1
-2. Enter step 2
-3. ...
+1. Declare and assign new constant ('nc2024VotersByPartyAndCounty') to InternMap() ('d3.group').
+2. Enter parameters: input data ('nc2024SampleVoters') and a function specifying by which fields ('voter_party_code', 'county_desc') to group the data.
+3. In a second codeblock, enter new constant 'nc2024VotersByPartyAndCount' to output on page.
 
-```javascript
+```js
 // Your code goes here
+const nc2024VotersByPartyAndCounty = d3.group(
+  nc2024SampleVoters,
+  (d) => d.voter_party_code,
+    (d) => d.county_desc,
+)
 ```
 
-```javascript
+```js
 // Your grouped variable here
+nc2024VotersByPartyAndCounty
 ```
 
 ### E5. Rollup NC Voters by Total Ballot Sent Date as an InternMap()
@@ -1070,16 +1076,28 @@ First outline your procedure with steps below. Then, use the JS codeblock to per
 
 First outline your procedure with steps below. Then, use the JS codeblock to perform your rollup as a D3.js `InternMap()`.
 
-1. Enter step 1
-2. Enter step 2
-3. ...
+1. Using a 'for...of' loop, declare and assign new constant 'ballotReqDate' to custom date parser 'formalDateObj' to create new Date() field ('ballot_req_dt_obj').
+2. Enter step 2 Declare and assign new constant 'nc2024VotersByBallotRequestDate' to InternMap() ('d3.rollup'). 
+3. Enter parameters: input data ('nc2024SampleVoters') and a function specifying to which fields ('length', 'ballot_req_dt_obj') to reduce the data.
+4. In a second codeblock, enter new constant 'nc2024VotersByBallotRequestDate' to output on page.
 
-```javascript
+```js
 // Your code goes here
+for (const voter of nc2024SampleVoters) {
+  let ballotReqDate = formalDateObj(voter.ballot_req_dt)
+  voter.ballot_req_dt_obj = ballotReqDate
+}
+
+const nc2024VotersByBallotRequestDate = d3.rollup(
+  nc2024SampleVoters,
+  (D) => D.length,
+    (d) => d.ballot_req_dt_obj
+)
 ```
 
-```javascript
+```js
 // Your grouped variable here
+nc2024VotersByBallotRequestDate
 ```
 
 ## Submission

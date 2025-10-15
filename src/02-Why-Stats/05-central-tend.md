@@ -161,7 +161,7 @@ In the attached dataset, `digArchivePageTests`, the FCP value in milliseconds us
     1. Within `.rollup()`, create object of central tendency measurements on the leaf node by using D3's methods: `d3.mean`, `d3.median`, `d3.mode`, `d3.min`, `d3.max`, and the JS `.length` method.
     2. Rollup at per website level with `.hostname`.
 
-<!-- Exectuable FCP rollup -->
+<!-- Non-Exectuable FCP rollup -->
 ```javascript
 // FCP measured in milliseconds
 const colOfInterest = "first-contentful-paint-numericValue"
@@ -307,7 +307,7 @@ Plot.plot({
       }
     ),
 
-    // Plot median values
+    // Plot values
     Plot.dot(
       digArchivePageTests,
       {

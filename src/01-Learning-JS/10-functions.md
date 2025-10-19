@@ -117,33 +117,35 @@ Now, code!
 // Your function code goes here
 import {utcParse,utcFormat} from "d3-time-format";
 
-const parseMDYSlash = utcParse("%m/%d/%y")
+const myFunc = (data, dateKeys, dateParser) => {
+  let updatedData = data.map(
+    (ballot) => {
+      for (let date of dateKeys) {
+        let dateObjKey = date+"_obj"
+        ballot[dateObjKey] = dateParser(ballot[date])
+      }
 
-const myFunc = (ballot_req_dt, ballot_send_dt, ballot_send_dt) => {
-return nc2024AbsenteeVoterData.map(
-  (ballot) => {
-    const dateObj = 
-  }
-)
+      return ballot
+    }
+  )
+  return updatedData
 }
-
-const updatedData = myFunc(nc2024AbsenteeVoterData)
 ```
 
 ```js
-// Your use of the function code goes here
-
+const parseMDYSlash = utcParse("%m/%d/%y")
+// Add array of date keys here
+let dateKeys = ["ballot_req_dt", "ballot_send_dt", "ballot_rtn_dt"]
+const updatedData = myFunc(nc2024AbsenteeVoterData, dateKeys, parseMDYSlash)
 ```
 
 <p class="codeblock-caption">
   E1 Interactive Output
 </p>
 
-```javascript
+```js
 // Convert and output variable here
-    ballot.ballot_req_dt_obj = parseMDYSlash(ballot.ballot_req_dt);
-    ballot.ballot_send_dt_obj = parseMDYSlash(ballot.ballot_send_dt);
-    ballot.ballot_rtn_dt_obj = parseMDYSlash(ballot.ballot_rtn_dt);
+updatedData
 ```
 
 ## E3. Create Your Own Function (with Conditions)!

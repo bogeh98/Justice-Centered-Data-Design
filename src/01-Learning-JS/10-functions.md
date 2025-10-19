@@ -107,9 +107,12 @@ nc2024AbsenteeVoterData
 
 First outline your procedure with steps below.
 
-1. Enter step 1
-2. Enter step 2
-3. ...
+1. Import any necessary date methods from D3.js library.
+2. Declare new function constant, enter parameter(s) (first one should be `data`).
+3. After arrow notation (i.e., in function body) and within curly braces, declare and assign new variable (representing updated data) to new map of `data`. 
+4. Enter function conditions. Then, add return statement(s).
+5. Open a new codeblock. Inside, declare a constant for the updated data and assign to function from previous codeblock. Enter parameter(s).
+6. Open a new codeblock. Inside, enter updated data constant to output to page.
 
 Now, code!
 
@@ -154,27 +157,42 @@ updatedData
 
 First outline your procedure with steps below.
 
-1. Enter step 1
-2. Enter step 2
-3. ...
+1. Declare new function constant, enter parameter(s) (first one should be `data`).
+2. After arrow notation (i.e., in function body) and within curly braces, enter function conditions (i.e., new map of `data`). Then, add return statement(s).
+3. Open a new codeblock. Inside, declare a constant for the updated data and assign to function from previous codeblock. Enter parameter(s).
+4. Open a new codeblock. Inside, enter updated data constant to output to page.
 
 Now, code!
 
-```javascript
+```js
 // Your function code goes here
-const newDataSet = myFunc(nc2024AbsenteeVoterData)
+const newFunc = (data) => {
+  return data.map(
+    (ballot) => {
+      if (ballot.ballot_rtn_status === "ACCEPTED") {
+      ballot.ballot_rtn_status = "signed, sealed, delivered"
+      }
+      else {
+      ballot.ballot_rtn_status = "straight up in the trash"
+      }
+      return ballot
+    }
+  )
+}
 ```
 
-```javascript
+```js
 // Your use of the function code goes here
+const nc2024AbstVoterDataWNewRtrnStatus = newFunc(nc2024AbsenteeVoterData)
 ```
 
 <p class="codeblock-caption">
   E2 Interactive Output
 </p>
 
-```javascript
+```js
 // Your output variable here
+nc2024AbstVoterDataWNewRtrnStatus
 ```
 
 ## Submission

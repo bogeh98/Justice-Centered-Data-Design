@@ -733,7 +733,7 @@ Akin to Object Arrays, D3.js has the InternMap. ***Interning*** is specific meth
 
 For example, the below InternMap considers two Date instances representing the same moment to be equal, so the environment will only store the first instance, i.e., replace the `"red"` entry with subsequent `"green"` entry. Print that out to the console and see for yourself.
 
-```javascript
+```js
 const exampleInternMap = new InternMap([
   [new Date(Date.UTC(2001, 0, 1)), "red"],
   [new Date(Date.UTC(2001, 0, 1)), "green"] // replaces previous entry
@@ -741,6 +741,8 @@ const exampleInternMap = new InternMap([
 
 // Get value at specific indexed Date() object key
 exampleInternMap.get(new Date(Date.UTC(2001, 0, 1))) // "green"
+
+console.log(exampleInternMap.get(new Date(Date.UTC(2001, 0, 1))))
 ```
 
 ### D3's InternMap() is an upgraded version of JS Map()
@@ -758,9 +760,10 @@ Ok, Date() object behavior is one big reason to use InternMaps. Additionally, In
 
 For more proof, check out both of their respective `prototype` functions in the web console. Convert this `javascript` codeblock to an executable `js` codeblock and see for yourself:
 
-```javascript
+```js
 let ogJsMap = new Map()
 let d3InternMap = new InternMap()
+
 console.log(
   "ogJsMap\n", ogJsMap
   "\nd3InternMap\n", d3InternMap
@@ -955,12 +958,22 @@ nc24VotersRollUpPartyAndRace.get("DEM").get("F") // Yields 4149
   Be sure to write your code in a manner aligned with how I break down the process above.
 </p>
 
-```javascript
+```js
 // Your code goes here
+let nc2024BallotRtnStsAndRace = nc2024SampleVoters.map(
+  (voter) => {
+    if (voter.ballot_rtn_status !== null) {
+    const voterRtnSts = voter.ballot_rtn_status
+    const race = voter.race
+    return {voterRtnSts, race}
+    }
+  }
+)
+.filter(Boolean)
 ```
 
-```javascript
-// Your new variable here
+```js
+nc2024BallotRtnStsAndRace
 ```
 
 ### E2. Group NC Voters By the Ballot Sent Date as an InternMap()
@@ -976,12 +989,23 @@ nc24VotersRollUpPartyAndRace.get("DEM").get("F") // Yields 4149
   Be sure to write your code in a manner aligned with how I break down the process above.
 </p>
 
-```javascript
+```js
 // Your code goes here
+const formalDateObj = utcParse("%m/%d/%y")
+
+for (const voter of nc2024SampleVoters) {
+  let ballotSendDate = formalDateObj(voter.ballot_send_dt)
+  voter.ballot_send_dt_obj = ballotSendDate
+}
+
+const nc2024BallotSendDate = d3.group(
+  nc2024SampleVoters,
+  (d) => d.ballot_send_dt_obj
+)
 ```
 
-```javascript
-// Your grouped variable here
+```js
+nc2024BallotSendDate
 ```
 
 ### E3. Group NC Voters By Age Range as an InternMap()
@@ -1000,12 +1024,26 @@ nc24VotersRollUpPartyAndRace.get("DEM").get("F") // Yields 4149
   </ol>
 </div>
 
-```javascript
+```js
 // Your code goes here
+let nc2024VoterAgeLimits = [50, 70, 90]
+
+const nc2024VoterAgeGroups = d3.group(
+  nc2024SampleVoters,
+  (d) => {
+    if (d.age > 50 && d.age < 70) {
+      return "50-70 y/o"
+    }
+    else if (d.age > 71 && d.age < 90) {
+      return "70-90 y/o"
+    }
+  }
+)
 ```
 
-```javascript
+```js
 // Your grouped variable here
+nc2024VoterAgeGroups
 ```
 
 ### E4. Group NC Voters by Your Desired set of 2-3 Fields as an InternMap()
@@ -1014,16 +1052,22 @@ nc24VotersRollUpPartyAndRace.get("DEM").get("F") // Yields 4149
 
 First outline your procedure with steps below. Then, use the JS codeblock to perform your grouping as a D3.js `InternMap()`.
 
-1. Enter step 1
-2. Enter step 2
-3. ...
+1. Declare and assign new constant ('nc2024VotersByPartyAndCounty') to InternMap() ('d3.group').
+2. Enter parameters: input data ('nc2024SampleVoters') and a function specifying by which fields ('voter_party_code', 'county_desc') to group the data.
+3. In a second codeblock, enter new constant 'nc2024VotersByPartyAndCount' to output on page.
 
-```javascript
+```js
 // Your code goes here
+const nc2024VotersByPartyAndCounty = d3.group(
+  nc2024SampleVoters,
+  (d) => d.voter_party_code,
+    (d) => d.county_desc,
+)
 ```
 
-```javascript
+```js
 // Your grouped variable here
+nc2024VotersByPartyAndCounty
 ```
 
 ### E5. Rollup NC Voters by Total Ballot Sent Date as an InternMap()
@@ -1032,16 +1076,28 @@ First outline your procedure with steps below. Then, use the JS codeblock to per
 
 First outline your procedure with steps below. Then, use the JS codeblock to perform your rollup as a D3.js `InternMap()`.
 
-1. Enter step 1
-2. Enter step 2
-3. ...
+1. Using a 'for...of' loop, declare and assign new constant 'ballotReqDate' to custom date parser 'formalDateObj' to create new Date() field ('ballot_req_dt_obj').
+2. Enter step 2 Declare and assign new constant 'nc2024VotersByBallotRequestDate' to InternMap() ('d3.rollup'). 
+3. Enter parameters: input data ('nc2024SampleVoters') and a function specifying to which fields ('length', 'ballot_req_dt_obj') to reduce the data.
+4. In a second codeblock, enter new constant 'nc2024VotersByBallotRequestDate' to output on page.
 
-```javascript
+```js
 // Your code goes here
+for (const voter of nc2024SampleVoters) {
+  let ballotReqDate = formalDateObj(voter.ballot_req_dt)
+  voter.ballot_req_dt_obj = ballotReqDate
+}
+
+const nc2024VotersByBallotRequestDate = d3.rollup(
+  nc2024SampleVoters,
+  (D) => D.length,
+    (d) => d.ballot_req_dt_obj
+)
 ```
 
-```javascript
+```js
 // Your grouped variable here
+nc2024VotersByBallotRequestDate
 ```
 
 ## Submission

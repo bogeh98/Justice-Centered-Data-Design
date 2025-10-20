@@ -179,7 +179,10 @@ Appiah's theory of race being nothing more than cultural identity is also proble
 
 **Question**: Pick and choose any particular combination of concepts and heuristics from the readings in 2.1 and 2.3. Use these questions and ideas to discuss your understanding of the 2024 NC General Election mail-in ballot data. What questions and criticisms do you have about the dataset's categories, hieararchies, collection, etc.?
 
-YOUR_RESPONSE_HERE
+**Answer**: When it comes to potential criticisms/questions around the 2024 NC General Election mail-in ballot data, I thought immediately of the part in the *Queer Data* reading when Guyan parallels Foucault's idea about how "'visibility is a trap'" with issues of power and data. The publicly accessible nature of the mail-in ballot data, which contains information like voters’ full name and home address, raises safety concerns. Because there are no barriers to viewing the data, it could easily be used by bad actors for harm. Even if there is a way to opt out of having your record public, I assume that option isn’t widely used or advertised.
+
+To avoid these pitfalls, the “Defence of the Client” method (detailed in the first chapter of *Statistic for Social Justice*) should be practiced by the North Carolina state election board. Mail-in voters should be made clearly aware of the publicly accessible nature of their voting data, as well as, if available, the option to make their data private (which should be easily accessible).
+
 
 ## Submission
 

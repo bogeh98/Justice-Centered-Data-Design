@@ -96,7 +96,11 @@ export default {
         {
           name: "2.5 Central Tendency",
           path: "/02-Why-Stats/05-central-tend"
-        },        // {
+        },
+        {
+          name: "2.6 Dispersion",
+          path: "/02-Why-Stats/06-dispersion"
+        },         // {
         //   name: "2.5 Central Tendency & Variability",
         //   path: "/02-Why-Stats/05-central-tend-plot--teachers_copy"
         // },

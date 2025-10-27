@@ -106,6 +106,17 @@ export default {
         // },
       ]
     },
+    // 3. TEXTUAL ANALYSIS
+    {
+      name: "3. Textual Analysis",
+      open: false,
+      pages: [
+        {
+          name: "Weighting Words with TF-IDF",
+          path: "/03-Textual-Analysis/01-weighting-words"
+        },
+      ]
+    },
     // HELP PAGES
     {
       name: "Help",

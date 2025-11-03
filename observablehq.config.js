@@ -116,8 +116,12 @@ export default {
       open: false,
       pages: [
         {
-          name: "Weighting Words with TF-IDF",
+          name: "3.1 Weighting Words with TF-IDF",
           path: "/03-Textual-Analysis/01-weighting-words"
+        },
+        {
+          name: "3.2 Processing Text",
+          path: "/03-Textual-Analysis/02-processing"
         },
       ]
     },

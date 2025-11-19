@@ -248,11 +248,11 @@ const ncAbsenteeBallotData2024 = FileAttachment("./../data/nc-voters/nc_absentee
 
 ```js
 // Your other code with your variable goes here
-ncAbsenteeBallotData2024
-
 console.log(ncAbsenteeBallotData2024.name)
 
 console.log(ncAbsenteeBallotData2024.size)
+
+console.log(ncAbsenteeBallotData2024[0])
 ```
 
 Make sure that you verify the logs are there!

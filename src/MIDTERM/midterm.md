@@ -32,34 +32,9 @@ booksData
 Below, I converted the "Publish Date" date strings into Date() objects. Then, I converted those Date() objects back into date strings, but in a more standard format: mm/dd/YYYY.
 
 ```js
-const formalDateParser = utcParse("%A, %B %_d, %Y")
-formalDateParser(booksData["Publish Date"])
-
-const booksDataNew = booksData.map(
-  (book) => {
-    book["Publish Date Abbrev"] = formalDateParser(booksData["Publish Date"])
-    return book
-  }
-)
-
-const formatSlashDate = utcFormat("%m/%d/%Y")
-const dateObj = new Date(booksDataNew["Publish Date Abbrev"])
-
-const booksDataNew2 = booksDataNew.map(
-  (book) => {
-    book["Publish Date Num"] = formatSlashDate(dateObj)
-    return book
-  }
-)
-```
-
-```js
-booksDataNew
-```
-
-```js
-booksDataNew2
-```
+// LINDGREN: Add all of your parsers and formatters in 1 place for findability
+const formalDateParser = d3.utcParse("%A, %B %_d, %Y")
+const yearFormatter = d3.utcFormat("%Y")
 
 ## Grouping #1 - Books/Publication Information Sorted by Category (Topic)
 

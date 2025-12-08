@@ -36,6 +36,31 @@ Below, I converted the "Publish Date" date strings into Date() objects. Then, I 
 const formalDateParser = d3.utcParse("%A, %B %_d, %Y")
 const yearFormatter = d3.utcFormat("%Y")
 
+## LINDGREN: Split Categories as arrays
+
+Here's how to use `.map()` to create a new property that includes a list of categories, rather than a string that's hard to use. You could take this example and consider how to clean up other properties, such as the `.Author` property, which is always prepended with `"By "`. Or, the .Price property, which always starts with `"Price Starting at $"` and could be converted to a Number() object. No need to add it now, but it's a good example dataset that needs some initial processing work.
+
+```js
+booksDataNew.map(
+  (book) => {
+    if (book.Category != null) {
+      let categoriesTrimmed = book.Category.trim()
+
+      let cleanedList = []
+      for (let cat of categoriesTrimmed.split(",")) {
+        let trimmedCat = cat.trim()
+        cleanedList.push(trimmedCat)
+      }
+
+      book.CategoryList = cleanedList
+    }
+    else {
+      // No categories, so empty list
+      book.CategoryList = []
+    }
+    return book
+  }
+)
 ## Grouping #1 - Books/Publication Information Sorted by Category (Topic)
 
 1. Open new `js` codeblock.

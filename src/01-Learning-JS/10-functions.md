@@ -93,8 +93,12 @@ Overall keep that rule-of-thumb in mind as you practice writing functions.
 Use D3.js `FileAttachment()` method below in VS Code. Remember that you'll need to write a relative path as a String parameter that helps the computer find where the CSV file is in relation to this particular page's file in the project tree.
 
 <!-- Attach sampled NC voter data -->
-```javascript
-// Convert to `js` codeblock and attach sampled NC voter data file: nc_absentee_mail_2024_n20000.csv
+```js
+const nc2024AbsenteeVoterData = FileAttachment("./../data/nc-voters/nc_absentee_mail_2024_n20000.csv").csv({typed: true})
+```
+
+```js
+nc2024AbsenteeVoterData
 ```
 
 ## E2. Convert String dates to Date() objects
@@ -103,26 +107,48 @@ Use D3.js `FileAttachment()` method below in VS Code. Remember that you'll need 
 
 First outline your procedure with steps below.
 
-1. Enter step 1
-2. Enter step 2
-3. ...
+1. Import any necessary date methods from D3.js library.
+2. Declare new function constant, enter parameter(s) (first one should be `data`).
+3. After arrow notation (i.e., in function body) and within curly braces, declare and assign new variable (representing updated data) to new map of `data`. 
+4. Enter function conditions. Then, add return statement(s).
+5. Open a new codeblock. Inside, declare a constant for the updated data and assign to function from previous codeblock. Enter parameter(s).
+6. Open a new codeblock. Inside, enter updated data constant to output to page.
 
 Now, code!
 
-```javascript
+```js
 // Your function code goes here
+import {utcParse,utcFormat} from "d3-time-format";
+
+const myFunc = (data, dateKeys, dateParser) => {
+  let updatedData = data.map(
+    (ballot) => {
+      for (let date of dateKeys) {
+        let dateObjKey = date+"_obj"
+        ballot[dateObjKey] = dateParser(ballot[date])
+      }
+
+      return ballot
+    }
+  )
+  return updatedData
+}
 ```
 
-```javascript
-// Your use of the function code goes here
+```js
+const parseMDYSlash = utcParse("%m/%d/%y")
+// Add array of date keys here
+let dateKeys = ["ballot_req_dt", "ballot_send_dt", "ballot_rtn_dt"]
+const updatedData = myFunc(nc2024AbsenteeVoterData, dateKeys, parseMDYSlash)
 ```
 
 <p class="codeblock-caption">
   E1 Interactive Output
 </p>
 
-```javascript
+```js
 // Convert and output variable here
+updatedData
 ```
 
 ## E3. Create Your Own Function (with Conditions)!
@@ -131,26 +157,42 @@ Now, code!
 
 First outline your procedure with steps below.
 
-1. Enter step 1
-2. Enter step 2
-3. ...
+1. Declare new function constant, enter parameter(s) (first one should be `data`).
+2. After arrow notation (i.e., in function body) and within curly braces, enter function conditions (i.e., new map of `data`). Then, add return statement(s).
+3. Open a new codeblock. Inside, declare a constant for the updated data and assign to function from previous codeblock. Enter parameter(s).
+4. Open a new codeblock. Inside, enter updated data constant to output to page.
 
 Now, code!
 
-```javascript
+```js
 // Your function code goes here
+const newFunc = (data) => {
+  return data.map(
+    (ballot) => {
+      if (ballot.ballot_rtn_status === "ACCEPTED") {
+      ballot.ballot_rtn_status = "signed, sealed, delivered"
+      }
+      else {
+      ballot.ballot_rtn_status = "straight up in the trash"
+      }
+      return ballot
+    }
+  )
+}
 ```
 
-```javascript
+```js
 // Your use of the function code goes here
+const nc2024AbstVoterDataWNewRtrnStatus = newFunc(nc2024AbsenteeVoterData)
 ```
 
 <p class="codeblock-caption">
   E2 Interactive Output
 </p>
 
-```javascript
+```js
 // Your output variable here
+nc2024AbstVoterDataWNewRtrnStatus
 ```
 
 ## Submission
